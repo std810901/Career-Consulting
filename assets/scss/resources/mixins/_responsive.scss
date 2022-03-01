@@ -1,0 +1,19 @@
+
+// width <= 1024
+@mixin table-width() {
+  @media all and (max-width: 1024px) {
+    @content; 
+  }
+}
+// width <= 768
+@mixin sm-table-width() {
+  @media all and (max-width: 768px) {
+    @content;
+  }
+}
+// width <= 576
+@mixin mobile-width() {
+  @media all and (max-width: 576px) {
+    @content;
+  }
+}

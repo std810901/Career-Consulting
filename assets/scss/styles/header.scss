@@ -1,0 +1,42 @@
+.header_section {
+  width: 100%;
+  position: fixed;
+  padding: 24px 56px;
+  z-index: 999;
+  transition: all .5s ease-in-out;
+  @include table-width {
+    padding: 20px 30px;
+  }
+  @include sm-table-width {
+    padding: 14px 30px;
+  }
+  .brand_img {
+    max-width: 100%;
+    height: auto;
+    @include table-width {
+      width: 214px;
+    }
+    @include sm-table-width {
+      width: 170px;
+    }
+  }
+  .linkedin:hover {
+    content: url('~assets/images/ic_in_hover.svg');
+  }
+  .instagram:hover {
+    content: url('~assets/images/ic_ig_hover.svg');
+  }
+  .line:hover {
+    content: url('~assets/images/ic_line_hover.svg');
+  }
+  .mr20 {
+    margin-right: 20px;
+  }
+  .img_rwd {
+    max-width: 100%;
+    height: auto;
+    @include sm-table-width {
+      width: 20px;
+    }
+  }
+}
