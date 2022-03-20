@@ -734,7 +734,7 @@
                     <a
                       class="check_btn"
                       href="javascript:;"
-                      @click="subscribeArticle()"
+                      @click="subscribeArticle2()"
                     >
                       確定
                       <img src="~assets/images/subscribe_btn.svg" alt="" />
@@ -860,9 +860,9 @@ export default {
       options: {
         slidesPerView: 1,
         loop: true,
-        // autoplay: {
-        //   delay: 5000
-        // },
+        autoplay: {
+          delay: 5000
+        },
         pagination: {
           el: '.swiper-pagination',
           clickable: true
@@ -910,6 +910,30 @@ export default {
     cleanInput () {
       this.subscribeName = ''
       this.subscribeEmail = ''
+    },
+    subscribeArticle2 () {
+      if (!this.checkIsRobot()) {
+        const param = {
+          name: this.subscribeName,
+          email: this.subscribeEmail,
+          time: new Date()
+        }
+        console.log(param)
+        $.ajax({
+          type: "post",
+          url: "https://script.google.com/macros/s/AKfycbzvc3zla-kBaFVxOJcOnTdXIWRADix1uGkoFhCynXVp8QDqZkMctlwCQ9ttU95I899Y/exec",
+          data: param,
+          dataType: "JSON",
+          success: (response) => {
+            console.log(response)
+            if (response) {
+              this.subscribeSuccess = true
+            } else {
+              this.verificationFail = true
+            }
+        }
+        });
+      }
     },
     subscribeArticle () {
       if (!this.checkIsRobot()) {
@@ -986,7 +1010,7 @@ export default {
     getFeedback () {
       const result = axios
         .get(
-          'https://sheet.talfin.in/?sheet_id=1KhztjPGC8ccCcBN0_nW_QbrHqbNkFJG4pLuC_xp-eoM&sheet_name=feedback'
+          'https://sheet.talfin.in/?sheet_id=1miHNCIAEmjEdb2-M_i-rhErKIizo_I-aAleSqDOYFCg&sheet_name=feedback'
         )
         .then(response => {
           if (response.data) {
